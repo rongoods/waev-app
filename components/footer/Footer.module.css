@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  border-top: 4px solid rgb(0, 0, 0);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav a {
+  text-align: center;
+  color: rgb(249, 222, 176);
+  font-size: 2vw;
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: all 0.5s ease;
+  padding: 10px 0 10px 15px;
+}
+
+.nav a:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(249, 222, 176);
+}
+
+.image:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+.Image {
+  background-color: rgb(0, 0, 0);
+}

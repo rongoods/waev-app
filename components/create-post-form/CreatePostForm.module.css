@@ -1,0 +1,35 @@
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.postsList h1 {
+  color: var(--primary-light);
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  background: linear-gradient(
+    to right,
+    var(--secondary),
+    var(--primary-light) 20%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.postsList div {
+  border-bottom: 1px dotted var(--grey-dark);
+  padding-bottom: 1rem;
+}
+
+.postsList div:last-child {
+  border-bottom: none;
+}
+
+.postsList h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
