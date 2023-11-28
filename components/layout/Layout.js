@@ -1,6 +1,15 @@
 import Head from "next/head";
 import Footer from "../footer/Footer";
 import Nav from "../nav/Nav";
+import Link from "next/link";
+import styled from "styled-components";
+
+const FixedLink = styled(Link)`
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-weight: bold;
+`;
 
 export default function Layout({ children }) {
   return (
@@ -11,6 +20,9 @@ export default function Layout({ children }) {
       </Head>
       <Nav />
       <main>{children}</main>
+      <Link href={"/CreatePostForm"} passHref legacyBehavior>
+        <FixedLink>+ post</FixedLink>
+      </Link>
       <Footer />
     </>
   );

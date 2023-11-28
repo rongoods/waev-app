@@ -37,7 +37,7 @@ export default function Footer() {
             className={styles.image}
           ></Image>
           <br></br>
-          tribe
+          community
         </Link>
         <Link href={"/notification"}>
           {" "}
