@@ -1,11 +1,12 @@
 import React from "react";
 import { form, form_group, btn } from "./CreatePostForm.module.css";
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import Link from "next/link";
+// import { useRouter } from "next/router";
+// import { useSession } from "next-auth/react";
 
 export default function CreatePostForm() {
-  const router = useRouter();
-  const { data: session } = useSession();
+  //   const router = useRouter();
+  //   const { data: session } = useSession();
 
   const createPostForm = async (event) => {
     event.preventDefault();
@@ -16,7 +17,7 @@ export default function CreatePostForm() {
     const post = {
       title,
       content,
-      userId: session.user.userId,
+      //   userId: session.user.userId,
     };
 
     try {
@@ -42,24 +43,32 @@ export default function CreatePostForm() {
 
   return (
     <>
-      <h1>Add new post</h1>
+      <h1>add new post</h1>
       <form className={form} onSubmit={createPostForm}>
         <div className={form_group}>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">title</label>
           <input
             type="text"
             id="title"
-            placeholder="Enter title"
+            placeholder="enter title"
             name="title"
           />
         </div>
         <div className={form_group}>
-          <label htmlFor="content">Content</label>
-          <textarea id="content" rows="3" name="content"></textarea>
+          <label htmlFor="content">content</label>
+          <textarea
+            id="content"
+            rows="3"
+            name="content"
+            placeholder="write your post"
+          ></textarea>
         </div>
-        <button type="submit" className={btn}>
-          Submit
-        </button>
+        <Link href={"/"}>
+          {" "}
+          <button type="submit" className={btn}>
+            post
+          </button>
+        </Link>
       </form>
     </>
   );

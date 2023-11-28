@@ -32,7 +32,7 @@ export default function Navbar() {
                     height={30}
                     width={30}
                   ></Image>
-                  <p className="dropdown-writing">my persona</p>
+                  <p className="dropdown-writing">my profile</p>
                 </Link>
               </li>
               <li className="dropdown-item">
@@ -55,6 +55,17 @@ export default function Navbar() {
                     width={30}
                   ></Image>
                   <p className="dropdown-writing">playlist</p>
+                </Link>
+              </li>
+              <li className="dropdown-item">
+                <Link href={"/"}>
+                  <Image
+                    src={"/community.png"}
+                    alt="community-icon"
+                    height={30}
+                    width={30}
+                  ></Image>
+                  <p className="dropdown-writing">create a community</p>
                 </Link>
               </li>
               <li className="dropdown-item">
