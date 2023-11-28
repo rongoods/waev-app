@@ -1,35 +1,59 @@
-.postsList {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
-.postsList h1 {
-  color: var(--primary-light);
-  font-size: 3rem;
-  letter-spacing: 0.3rem;
-  text-transform: uppercase;
-  font-weight: 900;
-  background: linear-gradient(
-    to right,
-    var(--secondary),
-    var(--primary-light) 20%
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.form_group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.postsList div {
-  border-bottom: 1px dotted var(--grey-dark);
-  padding-bottom: 1rem;
+.form_group label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.postsList div:last-child {
-  border-bottom: none;
+.form_group input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
-.postsList h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--secondary);
+.form_group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form_group textarea {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.form_group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.btn {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
 }
