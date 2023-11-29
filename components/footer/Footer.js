@@ -28,7 +28,7 @@ export default function Footer() {
           <br></br>
           discover
         </Link>
-        <Link href={"/communities"}>
+        <Link href={"/community"}>
           <Image
             src={"/community.png"}
             alt="tribe-icon"

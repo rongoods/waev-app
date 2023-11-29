@@ -6,10 +6,15 @@ import styled from "styled-components";
 
 const FixedLink = styled(Link)`
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 110px;
+  right: 20px;
   font-weight: bold;
-  border: 1px solid black;
+  border: 2px solid black;
+  background-color: black;
+  color: rgb(249, 222, 176);
+  padding: 5px;
+  border-radius: 2px;
+  text-decoration: none;
 `;
 
 export default function Layout({ children }) {
@@ -21,8 +26,8 @@ export default function Layout({ children }) {
       </Head>
       <Nav />
       <main>{children}</main>
-      <Link href={"/CreatePostForm"} passHref legacyBehavior>
-        <FixedLink>+ post</FixedLink>
+      <Link href={"/new-post"} passHref legacyBehavior>
+        <FixedLink>create post</FixedLink>
       </Link>
       <Footer />
     </>

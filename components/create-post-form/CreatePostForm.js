@@ -61,11 +61,9 @@ export default function CreatePostForm() {
             placeholder="write your post"
           ></textarea>
         </div>
-        {/* <Link href={"/"}> */}{" "}
         <button type="submit" className={btn}>
           post
         </button>
-        {/* </Link> */}
       </form>
     </>
   );
