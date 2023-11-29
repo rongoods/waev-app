@@ -20,7 +20,7 @@ export default function Navbar() {
               alt={"more-icon"}
               width={50}
               height={50}
-            ></Image>{" "}
+            ></Image>
           </span>
           {showDropdown && (
             <ul className="dropdown-menu">
