@@ -17,7 +17,7 @@ export default function CreatePostForm() {
     const post = {
       title,
       content,
-      //   userId: session.user.userId,
+      _id,
     };
 
     try {

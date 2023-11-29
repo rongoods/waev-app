@@ -1,0 +1,31 @@
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.postsList h1 {
+  color: black;
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  background: black;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.postsList div {
+  border-bottom: 1px dotted black;
+  padding-bottom: 1rem;
+}
+
+.postsList div:last-child {
+  border-bottom: none;
+}
+
+.postsList h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: black;
+}
