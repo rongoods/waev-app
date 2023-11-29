@@ -28,9 +28,8 @@
 .form_group input {
   padding: 5px;
   border: 1px solid #000000;
-  border-radius: 4px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .form_group input:focus {
@@ -41,9 +40,8 @@
 .form_group textarea {
   padding: 5px;
   border: 1px solid #000000;
-  border-radius: 4px;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .form_group textarea:focus {
@@ -54,7 +52,6 @@
 .btn {
   padding: 5px;
   border: 2px solid #000000;
-  border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 2px;
