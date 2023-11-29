@@ -1,5 +1,5 @@
 import React from "react";
-import { form, form_group, btn } from "./CreatePostForm.module.css";
+import { form, form_group, btn, form_title } from "./CreatePostForm.module.css";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 // import { useSession } from "next-auth/react";
@@ -43,7 +43,7 @@ export default function CreatePostForm() {
 
   return (
     <>
-      <h1>add new post</h1>
+      <h1 className={form_title}>add new post</h1>
       <form className={form} onSubmit={createPostForm}>
         <div className={form_group}>
           <label htmlFor="title">title</label>
