@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const FixedLink = styled(Link)`
   position: fixed;
-  bottom: 110px;
+  bottom: 150px;
   right: 20px;
   font-weight: bold;
   border: 2px solid black;
@@ -15,6 +15,7 @@ const FixedLink = styled(Link)`
   padding: 5px;
   border-radius: 2px;
   text-decoration: none;
+  z-index: 9999;
 `;
 
 export default function Layout({ children }) {
@@ -26,9 +27,8 @@ export default function Layout({ children }) {
       </Head>
       <Nav />
       <main>{children}</main>
-      <Link href={"/new-post"} passHref legacyBehavior>
-        <FixedLink>create post</FixedLink>
-      </Link>
+      <FixedLink href={"/new-post"}>create post</FixedLink>
+
       <Footer />
     </>
   );

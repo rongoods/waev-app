@@ -39,7 +39,7 @@ export default function Footer() {
           <br></br>
           community
         </Link>
-        <Link href={"/notification"}>
+        <Link href={"/alerts"}>
           {" "}
           <Image
             src={"/alert.png"}
