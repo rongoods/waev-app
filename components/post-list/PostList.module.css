@@ -16,13 +16,13 @@
 }
 
 .postsList div {
-  border-bottom: 1px dotted black;
-  padding-bottom: 1rem;
+  border-bottom: 2px solid black;
+  padding: 1rem;
 }
 
-.postsList div:last-child {
+/* .postsList div:last-child {
   border-bottom: none;
-}
+} */
 
 .postsList h2 {
   font-size: 2rem;

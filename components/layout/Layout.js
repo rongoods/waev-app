@@ -9,6 +9,7 @@ const FixedLink = styled(Link)`
   bottom: 50px;
   right: 50px;
   font-weight: bold;
+  border: 1px solid black;
 `;
 
 export default function Layout({ children }) {

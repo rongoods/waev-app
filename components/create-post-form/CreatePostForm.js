@@ -1,18 +1,18 @@
 import React from "react";
 import { form, form_group, btn, form_title } from "./CreatePostForm.module.css";
 import Link from "next/link";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 // import { useSession } from "next-auth/react";
 
 export default function CreatePostForm() {
-  //   const router = useRouter();
+  const router = useRouter();
   //   const { data: session } = useSession();
 
   const createPostForm = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const { title, content } = Object.fromEntries(formData);
+    const { title, content, _id } = Object.fromEntries(formData);
 
     const post = {
       title,
@@ -28,8 +28,6 @@ export default function CreatePostForm() {
         },
         body: JSON.stringify(post),
       });
-
-      console.log(response);
 
       const data = await response.json();
 
@@ -63,12 +61,11 @@ export default function CreatePostForm() {
             placeholder="write your post"
           ></textarea>
         </div>
-        <Link href={"/"}>
-          {" "}
-          <button type="submit" className={btn}>
-            post
-          </button>
-        </Link>
+        {/* <Link href={"/"}> */}{" "}
+        <button type="submit" className={btn}>
+          post
+        </button>
+        {/* </Link> */}
       </form>
     </>
   );

@@ -6,7 +6,7 @@ export default function Posts({ posts }) {
       <h1>Posts</h1>
       {posts?.map((post) => (
         <div key={post._id}>
-          <h2>{post.title}</h2>
+          <h3>{post.title}</h3>
           <p>{post.content}</p>
         </div>
       ))}
