@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer>
       <nav className={styles.nav}>
-        <Link href="/">
+        <Link href="/" className={styles.footerBtn}>
           <Image
             src={"/home.png"}
             alt="home-icon"
@@ -17,7 +17,7 @@ export default function Footer() {
           <br></br>
           home
         </Link>
-        <Link href={"/discover"}>
+        <Link href={"/discover"} className={styles.footerBtn}>
           <Image
             src={"/search.png"}
             alt="discover-icon"
@@ -28,7 +28,7 @@ export default function Footer() {
           <br></br>
           discover
         </Link>
-        <Link href={"/community"}>
+        <Link href={"/communities"} className={styles.footerBtn}>
           <Image
             src={"/community.png"}
             alt="tribe-icon"
@@ -39,7 +39,7 @@ export default function Footer() {
           <br></br>
           community
         </Link>
-        <Link href={"/alerts"}>
+        <Link href={"/alerts"} className={styles.footerBtn}>
           {" "}
           <Image
             src={"/alert.png"}
@@ -72,7 +72,7 @@ export default function Footer() {
           <br></br>
           persona
         </Link> */}
-        <Link href={"/messages"}>
+        <Link href={"/messages"} className={styles.footerBtn}>
           <Image
             src={"/message.png"}
             alt="messages-icon"

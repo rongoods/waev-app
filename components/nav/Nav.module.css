@@ -1,15 +1,17 @@
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
+  left: 0;
   background-color: rgb(249, 222, 176);
   padding: 10px 20px;
   z-index: 1000;
   border-bottom: 4px solid black;
-  width: 100%;
-}
+  border-right: 4px solid black;
+  width: 20%;
+} */
 
 .navbar-nav {
   display: flex;
@@ -19,8 +21,19 @@
   align-items: center;
 }
 
-.nav-item {
-  margin-right: 20px;
+.navItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(249, 222, 176);
+  padding: 10px 20px;
+  z-index: 1000;
+  border-bottom: 4px solid black;
+  border-right: 4px solid black;
+  width: 180px;
 }
 
 .dropdown {
@@ -28,22 +41,21 @@
   cursor: pointer;
 }
 
-.dropdown-btn {
+.dropdownBtn {
   display: flex;
   align-items: center;
   background-color: rgb(249, 222, 176);
 }
 
-.dropdown-menu {
+.dropdownMenu {
   position: relative;
   top: 100%;
   left: 0;
   list-style-type: none;
   background-color: rgb(249, 222, 176);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+  /* padding: 10px; */
   border-radius: 4px;
-  display: none;
   z-index: 1001;
 }
 
@@ -59,12 +71,14 @@
   margin-bottom: 0;
 }
 
-.dropdown-writing {
+.dropdownWriting {
   margin-left: 10px;
+  font-style: none;
 }
 
 .title {
   font-size: 40px;
   padding: 0;
   margin: 0;
+  font-family: "Space Mono";
 }
