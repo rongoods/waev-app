@@ -22,8 +22,8 @@ export default function Navbar() {
           ></Image>
         </span>
         {showDropdown && (
-          <ul className="dropdown-menu">
-            <li className="dropdown-item">
+          <ul className={styles.dropdownMenu}>
+            <li className={styles.dropdownItem}>
               <Link href={"/profile"}>
                 <Image
                   src={"/profile.png"}
@@ -31,10 +31,10 @@ export default function Navbar() {
                   height={30}
                   width={30}
                 ></Image>
-                <p className="dropdown-writing">my profile</p>
+                <p className={styles.dropdownWriting}>my profile</p>
               </Link>
             </li>
-            <li className="dropdown-item">
+            <li className={styles.dropdownItem}>
               <Link href={"/bookmarks"}>
                 <Image
                   src={"/bookmark.png"}
@@ -42,10 +42,10 @@ export default function Navbar() {
                   height={30}
                   width={30}
                 ></Image>
-                <p className={"dropdown-writing"}>bookmarks</p>
+                <p className={styles.dropdownWriting}>bookmarks</p>
               </Link>
             </li>
-            <li className="dropdown-item">
+            <li className={styles.dropdownItem}>
               <Link href={"/playlist"}>
                 <Image
                   src={"/music.png"}
@@ -53,10 +53,10 @@ export default function Navbar() {
                   height={30}
                   width={30}
                 ></Image>
-                <p className="dropdown-writing">playlist</p>
+                <p className={styles.dropdownWriting}>playlist</p>
               </Link>
             </li>
-            <li className="dropdown-item">
+            <li className={styles.dropdownItem}>
               <Link href={"/create-community"}>
                 <Image
                   src={"/community.png"}
@@ -64,10 +64,10 @@ export default function Navbar() {
                   height={30}
                   width={30}
                 ></Image>
-                <p className="dropdown-writing">create a community</p>
+                <p className={styles.dropdownWriting}>create a community</p>
               </Link>
             </li>
-            <li className="dropdown-item">
+            <li className={styles.dropdownItem}>
               <Link href={"/settings"}>
                 <Image
                   src={"/settings.png"}

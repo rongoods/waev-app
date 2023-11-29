@@ -2,30 +2,39 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 }
 
 .postsList h1 {
   color: black;
-  font-size: 3rem;
+  font-size: 40px;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
   font-weight: 900;
   background: black;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .postsList div {
   border-bottom: 2px solid black;
-  padding: 1rem;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
-/* .postsList div:last-child {
+.postsList div:last-child {
   border-bottom: none;
-} */
+  padding-bottom: 200px;
+}
 
-.postsList h2 {
-  font-size: 2rem;
+.postsList h3 {
+  font-size: 20px;
   margin-bottom: 0.5rem;
   color: black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.postsList p {
+  border: 1px solid black;
 }

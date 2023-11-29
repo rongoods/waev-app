@@ -1,6 +1,5 @@
 import React from "react";
 import { form, form_group, btn, form_title } from "./CreatePostForm.module.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
 // import { useSession } from "next-auth/react";
 
