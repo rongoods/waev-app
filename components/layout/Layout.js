@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const FixedLink = styled(Link)`
   position: fixed;
-  bottom: 150px;
+  bottom: 100px;
   right: 20px;
   font-weight: bold;
   border: 2px solid black;

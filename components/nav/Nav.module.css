@@ -29,11 +29,13 @@
   top: 0;
   left: 0;
   background-color: rgb(249, 222, 176);
-  padding: 10px 20px;
+  padding-top: 5px;
+  padding-left: 5px;
   z-index: 1000;
   border-bottom: 4px solid black;
   border-right: 4px solid black;
   width: 180px;
+  border-radius: 2px;
 }
 
 .dropdown {
@@ -41,13 +43,14 @@
   cursor: pointer;
 }
 
-.dropdownBtn {
+.dropdown-btn {
   display: flex;
-  align-items: center;
+  /* position: fixed; */
+  /* align-items: center; */
   background-color: rgb(249, 222, 176);
 }
 
-.dropdownMenu {
+.dropdown-menu {
   position: relative;
   top: 100%;
   left: 0;
@@ -80,5 +83,5 @@
   font-size: 40px;
   padding: 0;
   margin: 0;
-  font-family: "Space Mono";
+  /* font-family: "Space Mono"; */
 }
