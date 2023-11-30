@@ -39,3 +39,12 @@
 .postsList p {
   /* border: 1px solid black; */
 }
+
+.commentsBtn {
+  background-color: black;
+  color: rgb(249, 222, 176);
+  border-radius: 1px;
+  padding: 2px;
+  cursor: pointer;
+  border: solid black;
+}
