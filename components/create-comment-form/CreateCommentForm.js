@@ -2,7 +2,7 @@ import { useRouter } from "next/router.js";
 import { mutate } from "swr";
 // import { useSession } from "next-auth/react";
 
-export default function CreateCommentForm({ comments }) {
+export default function CreateCommentForm({ postId }) {
   const router = useRouter();
 
   //   const { data: session } = useSession();
@@ -11,11 +11,11 @@ export default function CreateCommentForm({ comments }) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const { content, _id } = Object.fromEntries(formData);
+    const { content } = Object.fromEntries(formData);
 
     const comment = {
       content,
-      _id,
+      postId: postId,
     };
 
     try {
