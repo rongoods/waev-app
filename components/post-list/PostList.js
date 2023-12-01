@@ -1,8 +1,77 @@
 import { useState } from "react";
 import styles from "./PostList.module.css";
 import CreateCommentForm from "../create-comment-form/CreateCommentForm.js";
+// import Post from "../post/Post.js";
 
-export default function Posts({ posts }) {
+// below is a test
+
+// function Post({ post, handleViewComments, handleCloseComments }) {
+//   const [showDropdown, setShowDropdown] = useState(false);
+
+//   const toggleDropdown = () => {
+//     setShowDropdown(!showDropdown);
+//   };
+
+//   return (
+//     <div key={post._id}>
+//       <h3>{post.title}</h3>
+//       <p>{post.content}</p>
+//       <div>
+//         <button onClick={toggleDropdown}>comment</button>
+//       </div>
+//       {showDropdown && <CreateCommentForm />}
+//       {post._id === handleViewComments ? (
+//         <div>
+//           <button className={styles.commentsBtn} onClick={handleCloseComments}>
+//             close comments
+//           </button>
+//           {post.comments.map((comment) => (
+//             <div key={comment._id}>
+//               <p>{comment.text}</p>
+//             </div>
+//           ))}
+//         </div>
+//       ) : (
+//         <button
+//           className={styles.commentsBtn}
+//           onClick={() => handleViewComments(post._id)}
+//         >
+//           view comments
+//         </button>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default function PostList({ posts }) {
+//   const [selectedPost, setSelectedPost] = useState(null);
+
+//   const handleViewComments = (postId) => {
+//     setSelectedPost(postId);
+//   };
+
+//   const handleCloseComments = () => {
+//     setSelectedPost(null);
+//   };
+
+//   return (
+//     <div className={styles.postsList}>
+//       <h1 className={styles.pageTitle}>Posts</h1>
+//       {posts?.map((post) => (
+//         <Post
+//           key={post._id}
+//           post={post}
+//           handleViewComments={selectedPost}
+//           handleCloseComments={handleCloseComments}
+//         />
+//       ))}
+//     </div>
+//   );
+// }
+
+//below is original code
+
+export default function PostList({ posts }) {
   const [selectedPost, setSelectedPost] = useState(null);
 
   const handleViewComments = (postId) => {

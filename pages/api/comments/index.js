@@ -8,6 +8,7 @@ export default async function handler(request, response) {
     const comment = await Comment.find();
     return response.status(200).json(comment);
   } else if (request.method === "POST") {
+    console.log(request.body);
     try {
       const commentData = request.body;
       await Comment.create(commentData);

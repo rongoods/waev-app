@@ -19,16 +19,6 @@
   padding: 7px 0 0px 0px;
 }
 
-.nav a:hover {
-  background-color: rgb(0, 0, 0);
-  color: rgb(249, 222, 176);
-}
-
-.image:hover {
-  background-color: rgb(0, 0, 0);
-  display: none;
-}
-
 .image {
   background-color: rgb(249, 222, 176);
 }
