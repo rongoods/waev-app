@@ -1,15 +1,10 @@
-import React from "react";
-// import {
-//   form,
-//   form_group,
-//   btn,
-//   form_title,
-// } from "./CreateCommentForm.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router.js";
+import { mutate } from "swr";
 // import { useSession } from "next-auth/react";
 
-export default function CreateCommentForm() {
+export default function CreateCommentForm({ comments }) {
   const router = useRouter();
+
   //   const { data: session } = useSession();
 
   const createCommentForm = async (event) => {
@@ -35,7 +30,7 @@ export default function CreateCommentForm() {
       const data = await response.json();
 
       if (data.success) {
-        router.push("/");
+        mutate();
       }
     } catch (error) {
       console.log(error);
