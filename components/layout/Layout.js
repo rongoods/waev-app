@@ -26,6 +26,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/fakelogo.png" />
       </Head>
       <Nav />
+      <br></br>
       <main>{children}</main>
       <FixedLink href={"/new-post"}>create post</FixedLink>
 

@@ -2,6 +2,7 @@ import PostList from "@/components/post-list/PostList";
 import useSWR from "swr";
 import Link from "next/link";
 import styled from "styled-components";
+import CurrentDate from "@/components/current-date/DateTime";
 const FixedLink = styled(Link)`
   position: fixed;
   bottom: 50px;
@@ -16,6 +17,8 @@ export default function Home() {
 
   return (
     <>
+      <br></br>
+      {/* <CurrentDate /> */}
       <PostList posts={posts} />
       <Link href={"/new-post"} passHref legacyBehavior>
         <FixedLink>+ post</FixedLink>

@@ -128,6 +128,7 @@ import CreateCommentForm from "../create-comment-form/CreateCommentForm.js";
 // }
 
 //below is test 2
+// this is sending to database
 
 function Post({ post }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -161,7 +162,7 @@ function Post({ post }) {
           </button>
           {post.comments.map((comment) => (
             <div key={comment._id}>
-              <p>{comment.text}</p>
+              <p>{comment.content}</p>
             </div>
           ))}
         </div>
