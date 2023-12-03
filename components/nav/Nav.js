@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from "./Nav.module.css";
+import DateTime from "../current-date/DateTime";
 
 export default function Navbar() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -17,8 +18,8 @@ export default function Navbar() {
           <Image
             src={"/more.png"}
             alt={"more-icon"}
-            width={50}
-            height={50}
+            width={43}
+            height={43}
           ></Image>
         </span>
         {showDropdown && (
@@ -80,8 +81,11 @@ export default function Navbar() {
             </li>
           </ul>
         )}
-      </li>
+      </li>{" "}
       <h1 className={styles.title}>wæv</h1>
+      <div className={styles.rightContainer}>
+        <DateTime />
+      </div>
     </nav>
   );
 }

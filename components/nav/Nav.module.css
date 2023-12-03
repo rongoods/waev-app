@@ -14,11 +14,25 @@
 } */
 
 .navbar {
-  display: flex;
+  /* display: flex;
+  flex-direction: row;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  align-items: center; */
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(249, 222, 176);
+  padding: 10px 20px;
+  z-index: 1000;
+  border-bottom: 2px solid black;
+  /* border-right: 4px solid black; */
+  width: 100%; /* Adjust width as needed */
 }
 
 .navItem {
@@ -31,8 +45,8 @@
   left: 0;
   background-color: rgb(249, 222, 176);
   padding-top: 5px;
-  padding-left: 5px;
-  z-index: 1000;
+  padding-left: 0px;
+  z-index: 1001;
   border-bottom: 2px solid black;
   border-right: 2px solid black;
   width: 110px;
@@ -80,9 +94,16 @@
   font-style: none;
 }
 
-.title {
-  font-size: 40px;
+.title h1 {
+  font-size: 100px;
   padding: 0;
   margin: 0;
-  /* font-family: "Space Mono"; */
+  font-family: "Space Mono";
+  flex: 1;
+  text-align: right;
+  z-index: 1003;
+}
+.rightContainer {
+  text-align: right;
+  z-index: 10;
 }
