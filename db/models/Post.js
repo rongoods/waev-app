@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
-const { Schema, models, model } = mongoose;
 
-const postSchema = new Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-  create_at: { type: Date, default: Date.now },
-});
+const { Schema } = mongoose;
 
-const Post = models.Post || model("Post", postSchema);
+const postSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    postId: { type: Schema.Types.ObjectId, ref: "Post", required: true },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
 
 export default Post;
