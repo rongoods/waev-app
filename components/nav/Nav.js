@@ -83,9 +83,9 @@ export default function Navbar() {
         )}
       </li>{" "}
       <h1 className={styles.title}>wæv</h1>
-      <div className={styles.rightContainer}>
+      {/* <div className={styles.rightContainer}>
         <DateTime />
-      </div>
+      </div> */}
     </nav>
   );
 }

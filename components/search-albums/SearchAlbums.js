@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import styles from "./SearchAlbums.module.css";
 
-export default function SpotifyPlug() {
+export default function SearchAlbums() {
   const CLIENT_ID = "680c00e1f7a843b4b611679f5a56b0d8";
   const REDIRECT_URI = "http://localhost:3000/playlist";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
@@ -10,7 +11,7 @@ export default function SpotifyPlug() {
 
   const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("");
-  const [artists, setArtist] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -34,7 +35,7 @@ export default function SpotifyPlug() {
     window.localStorage.removeItem("token");
   };
 
-  async function searchArtists(event) {
+  async function searchAlbums(event) {
     event.preventDefault();
 
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
@@ -43,28 +44,34 @@ export default function SpotifyPlug() {
       },
       params: {
         q: searchKey,
-        type: "artist",
+        type: "album",
       },
     });
-    setArtist(data.artists.items);
+    setAlbums(data.albums.items);
   }
 
-  const renderArtists = () => {
-    return artists.map((artist) => (
-      <div key={artist.id}>
-        {artist.images.length ? (
-          <Image src={artist.images[0].url} alt="" width={100} height={100} />
+  const renderAlbums = () => {
+    return albums.map((album) => (
+      <div key={album.id}>
+        {album.images.length ? (
+          <Image
+            src={album.images[0].url}
+            alt=""
+            width={200}
+            height={200}
+            className={styles.div}
+          />
         ) : (
           <div>no image</div>
         )}
-        {artist.name}
+        {album.name}
       </div>
     ));
   };
 
   return (
     <div>
-      <h1>spotify plug</h1>
+      <h1>search albums</h1>
       {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -76,9 +83,10 @@ export default function SpotifyPlug() {
       )}
 
       {token ? (
-        <form onSubmit={searchArtists}>
+        <form onSubmit={searchAlbums}>
           <input
             type="text"
+            required="true"
             onChange={(event) => setSearchKey(event.target.value)}
           />
           <button type={"submit"}>search</button>
@@ -86,7 +94,7 @@ export default function SpotifyPlug() {
       ) : (
         <h2>please login</h2>
       )}
-      {renderArtists()}
+      {renderAlbums()}
     </div>
   );
 }
