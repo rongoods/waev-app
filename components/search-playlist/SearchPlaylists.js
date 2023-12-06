@@ -38,15 +38,18 @@ export default function SearchPlaylists() {
   async function searchPlaylists(event) {
     event.preventDefault();
 
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      params: {
-        q: searchKey,
-        type: "artist",
-      },
-    });
+    const { data } = await axios.get(
+      "https://api.spotify.com/v1/me/playlists",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          q: searchKey,
+          type: "playlist",
+        },
+      }
+    );
     setPlaylist(data.playlists.items);
   }
 

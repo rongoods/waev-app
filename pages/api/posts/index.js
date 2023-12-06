@@ -10,6 +10,7 @@ export default async function handler(request, response) {
   } else if (request.method === "POST") {
     try {
       const postData = request.body;
+      console.log("postData: ", postData);
       await Post.create(postData);
       return response.status(201).json({ status: "Post created" });
     } catch (error) {
@@ -20,7 +21,7 @@ export default async function handler(request, response) {
   try {
     const posts = await Post.find();
 
-    res.status(200).json(posts);
+    response.status(200).json(posts);
   } catch (error) {
     console.log(error);
   }

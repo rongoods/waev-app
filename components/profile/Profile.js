@@ -1,22 +1,40 @@
+import { useSession, signIn, signOut } from "next-auth/react";
+
 export default function Profile() {
+  const session = useSession();
+
   return (
-    <div>
-      <h1>profile page</h1>
-    </div>
+    <>
+      <h1>
+        hey,{" "}
+        {session.status === "authenticated"
+          ? session.data.user?.name || "friend"
+          : "stranger"}
+        !
+      </h1>
+      <p>
+        {session.status === "authenticated" ? (
+          <button type="button" onClick={() => signOut()}>
+            Sign out {session.data.user?.email}
+          </button>
+        ) : (
+          <button
+            type="button"
+            style={{ "--accent-color": "#15883e" }}
+            onClick={() => signIn("spotify")}
+            disabled={session.status === "loading"}
+          >
+            Sign in with Spotify
+          </button>
+        )}
+      </p>
+    </>
   );
 }
-
-// import { Helmet } from "react-helmet";
 
 // export default function ProfilePage() {
 //   return (
 //     <>
-//       <head>
-//         <Helmet>
-//           <title>My Spotify Profile</title>
-//           <script src="src/script.js" type="module"></script>
-//         </Helmet>
-//       </head>
 //       <body>
 //         <h1>Display your Spotify profile data</h1>
 
