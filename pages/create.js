@@ -1,5 +1,3 @@
-// this whole file is a test from tourio app
-
 import Link from "next/link.js";
 import styled from "styled-components";
 import { useRouter, mutate } from "next/router";

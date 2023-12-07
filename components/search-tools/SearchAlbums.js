@@ -49,7 +49,7 @@ export default function SearchAlbums() {
     });
     setAlbums(data.albums.items);
   }
-
+  console.log(token);
   const renderAlbums = () => {
     return albums.map((album) => (
       <div key={album.id} className={styles.searchedparent}>
