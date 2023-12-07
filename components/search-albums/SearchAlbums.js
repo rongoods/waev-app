@@ -52,7 +52,7 @@ export default function SearchAlbums() {
 
   const renderAlbums = () => {
     return albums.map((album) => (
-      <div key={album.id}>
+      <div key={album.id} className={styles.searchedparent}>
         {album.images.length ? (
           <Image
             src={album.images[0].url}
@@ -94,7 +94,7 @@ export default function SearchAlbums() {
       ) : (
         <h2>please login</h2>
       )}
-      {renderAlbums()}
+      <div className={styles.searchedchild}>{renderAlbums()}</div>
     </div>
   );
 }

@@ -64,7 +64,7 @@ export default function Footer() {
             ></Image>
           )}
         </Link>
-        <Link
+        {/* <Link
           href={"/alerts"}
           className={styles.footerBtn}
           onClick={() => handlePageChange("alerts")}
@@ -97,7 +97,7 @@ export default function Footer() {
               className={styles.image}
             ></Image>
           )}
-        </Link>
+        </Link> */}
       </nav>
     </footer>
   );

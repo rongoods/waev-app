@@ -52,7 +52,7 @@ export default function SearchArtists() {
 
   const renderArtists = () => {
     return artists.map((artist) => (
-      <div key={artist.id}>
+      <div key={artist.id} className={styles.searchedparent}>
         {artist.images.length ? (
           <Image
             src={artist.images[0].url}
@@ -94,7 +94,7 @@ export default function SearchArtists() {
       ) : (
         <h2>please login</h2>
       )}
-      {renderArtists()}
+      <div className={styles.searchedchild}>{renderArtists()}</div>
     </div>
   );
 }
