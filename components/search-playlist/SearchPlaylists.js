@@ -38,24 +38,21 @@ export default function SearchPlaylists() {
   async function searchPlaylists(event) {
     event.preventDefault();
 
-    const { data } = await axios.get(
-      "https://api.spotify.com/v1/me/playlists",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          q: searchKey,
-          type: "playlist",
-        },
-      }
-    );
+    const { data } = await axios.get("https://api.spotify.com/v1/search", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        q: searchKey,
+        type: "playlist",
+      },
+    });
     setPlaylist(data.playlists.items);
   }
 
   const renderPlaylists = () => {
     return playlists.map((playlist) => (
-      <div key={playlist.id}>
+      <div key={playlist.id} className={styles.searchedparent}>
         {playlist.images.length ? (
           <Image
             src={playlist.images[0].url}
@@ -97,7 +94,7 @@ export default function SearchPlaylists() {
       ) : (
         <h2>please login</h2>
       )}
-      {renderPlaylists()}
+      <div className={styles.searchedchild}>{renderPlaylists()}</div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function SearchSongs() {
 
   const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("");
-  const [songs, setSong] = useState([]);
+  const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -47,15 +47,15 @@ export default function SearchSongs() {
         type: "track",
       },
     });
-    setSong(data.songs.items);
+    setTracks(data.tracks.items);
   }
 
   const renderSongs = () => {
-    return songs.map((song) => (
-      <div key={song.id}>
-        {song.images.length ? (
+    return tracks.map((track) => (
+      <div key={track.id} className={styles.searchedparent}>
+        {track.album && track.album.images && track.album.images.length ? (
           <Image
-            src={artist.images[0].url}
+            src={track.album.images[0].url}
             alt=""
             width={200}
             height={200}
@@ -64,7 +64,7 @@ export default function SearchSongs() {
         ) : (
           <div>no image</div>
         )}
-        {song.name}
+        {track.name}
       </div>
     ));
   };
@@ -94,7 +94,7 @@ export default function SearchSongs() {
       ) : (
         <h2>please login</h2>
       )}
-      {renderSongs()}
+      <div className={styles.searchedchild}>{renderSongs()}</div>
     </div>
   );
 }

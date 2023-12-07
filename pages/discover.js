@@ -3,15 +3,19 @@ import SearchAlbums from "@/components/search-albums/SearchAlbums";
 import SearchArtists from "@/components/search-artists/SearchArtists";
 import SearchSongs from "@/components/search-songs/SearchSongs";
 import TestExplorerPage from "@/components/testFindComponents/testExplorerPage/TestExplorerPage";
+import SearchPlaylist from "@/components/search-playlist/SearchPlaylists";
+import SearchUsers from "@/components/search-users/SearchUsers";
 
 export default function Discover() {
   return (
     <>
       <DiscoverPage />
+      <SearchPlaylist />
       <SearchArtists />
       <SearchAlbums />
       <SearchSongs />
       <TestExplorerPage />
+      <SearchUsers />
     </>
   );
 }
