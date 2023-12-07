@@ -1,9 +1,9 @@
 import DiscoverPage from "@/components/discover/Discover";
-import SearchAlbums from "@/components/search-albums/SearchAlbums";
-import SearchArtists from "@/components/search-artists/SearchArtists";
-import SearchSongs from "@/components/search-songs/SearchSongs";
+import SearchAlbums from "@/components/search-tools/SearchAlbums";
+import SearchArtists from "@/components/search-tools/SearchArtists";
+import SearchSongs from "@/components/search-tools/SearchSongs";
 import TestExplorerPage from "@/components/testFindComponents/testExplorerPage/TestExplorerPage";
-import SearchPlaylist from "@/components/search-playlist/SearchPlaylists";
+import SearchPlaylist from "@/components/search-tools/SearchPlaylists";
 import SearchUsers from "@/components/search-users/SearchUsers";
 
 export default function Discover() {
