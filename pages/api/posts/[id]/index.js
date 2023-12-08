@@ -11,12 +11,13 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "GET") {
-    const post = await Post.findById(id);
-    const comments = await Comment.find({ postId: id });
+    const post = await Post.findById(id).populate("comments");
+    console.log("post!!!!!", post);
+    // const comments = await Comment.find({ postId: id });
     if (!post) {
       return response.status(404).json({ status: "Not Found" });
     }
-    response.status(200).json({ post, comments });
+    response.status(200).json({ post });
   } else if (request.method === "PATCH") {
     await Post.findByIdAndUpdate(id, {
       $set: request.body,

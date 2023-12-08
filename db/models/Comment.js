@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 const commentSchema = new Schema(
   {
     comment: { type: String },
-    postId: { type: Schema.Types.ObjectId, ref: "Post", required: true },
   },
   {
     timestamps: true,
