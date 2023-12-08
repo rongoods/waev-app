@@ -50,6 +50,7 @@ export default function DetailsPage() {
         </StyledButton>
       </ButtonContainer>
       <Comments />
+      <p>{comments.comment}</p>
     </>
   );
 }

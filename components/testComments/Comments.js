@@ -48,7 +48,6 @@ export default function Comments({ comments }) {
       </FormContainer>
       {comments && (
         <>
-          {/* <h1> {comments.length} fans commented on this place:</h1> */}
           {comments.map(({ comment }, idx) => {
             return (
               <div key={idx}>

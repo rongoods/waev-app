@@ -3,11 +3,10 @@ import styled, { css } from "styled-components";
 export const StyledButton = styled.button`
   background-color: black;
   padding: 0.8rem;
-  border-radius: 2px;
-  color: rgb(249, 222, 176);
+  border-radius: 1px;
+  color: white;
   text-decoration: none;
 
-  border: none;
   font-size: inherit;
 
   ${({ variant }) =>

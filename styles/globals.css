@@ -34,10 +34,12 @@
   font-family: "Courier New", Courier, monospace;
   padding: 0;
   margin: 0;
-  background-color: rgb(249, 222, 176);
-  /* background-color: antiquewhite; */
+  /* background-color: rgb(249, 222, 176); */
+  /* background-color: white; */
   color: rgb(0, 0, 0);
   box-sizing: border-box;
+  background-image: url("/public/3dwaev-background.jpeg");
+  background-size: auto;
 }
 li {
   list-style: none;
@@ -54,16 +56,18 @@ li {
 }
 
 #__next {
-  background-color: var(--primary-dark);
   color: var(--grey-light);
   line-height: 1.5;
   display: grid;
   grid-template-rows: auto 1fr auto;
   place-items: center;
   min-height: 100vh;
+  background-image: url("/public/wireframe-waev.jpeg");
+  background-size: auto;
 }
 
 main {
   max-width: 1200px;
   width: 90vw;
+  background-image: url("/public/wireframe-waev.jpeg");
 }

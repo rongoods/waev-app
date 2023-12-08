@@ -1,0 +1,22 @@
+.toggle-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1100;
+}
+
+.toggle-button:hover {
+  background-color: #ccc;
+}
+
+.dark-mode {
+  /* Your dark mode styles */
+  /* For example: */
+  background-color: black;
+  color: white;
+}
