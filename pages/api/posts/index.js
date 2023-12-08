@@ -11,20 +11,12 @@ export default async function handler(request, response) {
   } else if (request.method === "POST") {
     try {
       const postData = request.body;
-      //   console.log("postData", postData);
+
       const createdPost = await Post.create(postData);
-      //   console.log("createdPost", createdPost);
+
       return response.status(201).json({ status: "Post created" });
     } catch (error) {
       response.status(400).json({ error: error.message });
     }
   }
-
-  //   try {
-  //     const posts = await Post.find();
-
-  //     response.status(200).json(posts);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
 }
