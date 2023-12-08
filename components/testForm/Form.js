@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { StyledButton } from "../testStyledButton/StyledButton";
+import styles from "./Form.module.css";
 
 export const FormContainer = styled.form`
   display: grid;
@@ -9,14 +10,13 @@ export const FormContainer = styled.form`
 export const Input = styled.input`
   padding: 0.5rem;
   font-size: inherit;
-  border: 3px solid black;
-  border-radius: 2px;
+  border: 1px solid black;
 `;
 
 export const Textarea = styled.textarea`
   font-family: inherit;
-  border: 3px solid black;
-  border-radius: 2px;
+  border: 1px solid black;
+
   padding: 0.5rem;
 `;
 
@@ -33,7 +33,11 @@ export default function Form({ onSubmit, formName, defaultData }) {
   }
 
   return (
-    <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
+    <FormContainer
+      aria-labelledby={formName}
+      onSubmit={handleSubmit}
+      className={styles.formoutline}
+    >
       {/* <Label htmlFor="name">Name</Label>
       <Input
         id="name"

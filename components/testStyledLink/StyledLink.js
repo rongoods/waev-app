@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const StyledLink = styled.a`
-  background-color: black;
+  color: white;
   padding: 5px;
-  border-radius: 2px;
-  color: rgb(249, 222, 176);
+  border-radius: 1px;
+  background-color: black;
   text-decoration: none;
+  text-align: center;
 
   ${({ justifySelf }) =>
     justifySelf &&
@@ -18,6 +19,6 @@ export const StyledLink = styled.a`
     css`
       text-align: center;
       background-color: white;
-      border: 3px solid lightsalmon;
+      border: 1px solid black;
     `}
 `;

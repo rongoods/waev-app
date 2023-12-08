@@ -2,9 +2,10 @@ import Link from "next/link.js";
 import styled from "styled-components";
 
 const Article = styled.article`
-  border-bottom: 2px solid black;
-  border-radius: 2px;
-  padding: 2px;
+  border: 1px solid black;
+  border-radius: 1px;
+  padding: 5px;
+  margin: 15px;
 `;
 
 const Anchor = styled.a`
@@ -31,16 +32,65 @@ const ScreenReaderOnly = styled.span`
   border-width: 0;
 `;
 
+// export default function Card({ id, content, title }) {
+//   return (
+//     <Article key={id}>
+//       <h3>{title}</h3>
+//       <p>{content}</p>
+//       <Link href={`/posts/${id}`} passHref legacyBehavior>
+//         <Anchor>
+//           <ScreenReaderOnly>More Info</ScreenReaderOnly>
+//         </Anchor>
+//       </Link>
+//     </Article>
+//   );
+// }
+
+import { useState, useEffect } from "react";
+import { Comments } from "../testComments/Comments"; // Function to fetch comments for a post
+import styles from "./Card.module.css";
+
 export default function Card({ id, content, title }) {
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    // Fetch comments for the post with this 'id' when the component mounts
+    async function fetchComments() {
+      try {
+        const commentsData = await Comments(id);
+        setComments(commentsData);
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+      }
+    }
+
+    fetchComments();
+  }, [id]);
+
   return (
     <Article key={id}>
       <h3>{title}</h3>
       <p>{content}</p>
-      <Link href={`/posts/${id}`} passHref legacyBehavior>
+      <Link
+        href={`/posts/${id}`}
+        passHref
+        legacyBehavior
+        className={styles.pushedeffect}
+      >
         <Anchor>
           <ScreenReaderOnly>More Info</ScreenReaderOnly>
         </Anchor>
       </Link>
+
+      {/* Render comments */}
+      <div>
+        <h4>Comments:</h4>
+        <ul>
+          {comments.map((comment) => (
+            <li key={comment._id}>{comments.comment}</li>
+          ))}
+        </ul>
+      </div>
     </Article>
   );
 }

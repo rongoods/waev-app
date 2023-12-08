@@ -33,11 +33,11 @@ const FixedLink = styled(Link)`
   position: fixed;
   bottom: 100px;
   right: 20px;
-  border: 2px solid black;
+  border: 2px solid white;
   background-color: black;
-  color: rgb(249, 222, 176);
+  color: white;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 1px;
   text-decoration: none;
   z-index: 9999;
 `;

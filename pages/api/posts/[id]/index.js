@@ -23,7 +23,6 @@ export default async function handler(request, response) {
     });
     response.status(200).json({ status: `Post ${id} updated!` });
   } else if (request.method === "DELETE") {
-    console.log("id: ", id);
     await Post.findByIdAndDelete(id);
     response.status(200).json({ status: `Post ${id} successfully deleted.` });
   }
