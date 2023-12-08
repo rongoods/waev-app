@@ -23,7 +23,7 @@ export default function DetailsPage() {
   const { isReady } = router;
   const { id } = router.query;
   const { data, isLoading, error } = useSWR(`/api/posts/${id}`);
-
+  console.log("DATA", data);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   async function deletePost() {
@@ -32,7 +32,7 @@ export default function DetailsPage() {
     });
     router.push("/");
   }
-  const { post, comments } = data;
+  const { post } = data;
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>
@@ -49,8 +49,8 @@ export default function DetailsPage() {
           delete
         </StyledButton>
       </ButtonContainer>
-      <Comments />
-      <p>{comments.comment}</p>
+      <Comments comments={post.comments} />
+      {/* <p>{comments.comment}</p> */}
     </>
   );
 }

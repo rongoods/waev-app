@@ -6,23 +6,25 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const posts = await Post.find();
+    console.log("posts", posts);
     return response.status(200).json(posts);
   } else if (request.method === "POST") {
     try {
       const postData = request.body;
-      await Post.create(postData);
-      console.log(postData);
+      //   console.log("postData", postData);
+      const createdPost = await Post.create(postData);
+      //   console.log("createdPost", createdPost);
       return response.status(201).json({ status: "Post created" });
     } catch (error) {
       response.status(400).json({ error: error.message });
     }
   }
 
-  try {
-    const posts = await Post.find();
+  //   try {
+  //     const posts = await Post.find();
 
-    res.status(200).json(posts);
-  } catch (error) {
-    console.log(error);
-  }
+  //     response.status(200).json(posts);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 }
