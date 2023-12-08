@@ -9,6 +9,7 @@ const Article = styled.article`
   border-radius: 1px;
   padding: 5px;
   margin: 15px;
+  background-color: white;
 `;
 
 const Anchor = styled.a`

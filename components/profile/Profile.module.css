@@ -1,5 +1,54 @@
-* {
-  background-image: url("/public/wireframe-waev.png");
-  background-size: auto;
-  background-color: black;
+/* Profile.module.css */
+
+.profileContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin: 30px;
 }
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userProfile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.userProfile h2 {
+  font-size: 24px;
+}
+
+.playlistsSection,
+.recentTracksSection,
+.topTracksSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  border: 1px black;
+}
+
+.playlistsSection h3,
+.recentTracksSection h3,
+.topTracksSection h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.trackItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trackItem img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Add any additional styling or adjustments as needed */
