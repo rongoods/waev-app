@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledButton } from "../testStyledButton/StyledButton";
+import { StyledButton } from "../styled-button/StyledButton";
 import styles from "./Form.module.css";
 
 export const FormContainer = styled.form`

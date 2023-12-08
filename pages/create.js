@@ -1,8 +1,8 @@
 import Link from "next/link.js";
 import styled from "styled-components";
 import { useRouter, mutate } from "next/router";
-import Form from "../components/testForm/Form";
-import { StyledLink } from "../components/testStyledLink/StyledLink.js";
+import Form from "../components/form/Form";
+import { StyledLink } from "../components/styled-link/StyledLink.js";
 
 const StyledBackLink = styled(StyledLink)`
   justify-self: flex-start;

@@ -25,12 +25,4 @@ export default async function handler(request, response) {
       response.status(400).json({ error: error.message });
     }
   }
-
-  //   try {
-  //     const comments = await Comment.find();
-
-  //     res.status(200).json(comments);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
 }

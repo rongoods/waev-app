@@ -2,7 +2,7 @@ import { SessionProvider } from "next-auth/react";
 import "@/styles/globals.css";
 import GlobalStyle from "../styles.js";
 import { SWRConfig } from "swr";
-import Layout from "../components/testLayout/Layout.js";
+import Layout from "../components/layout/Layout.js";
 
 export default function App({ session, Component, pageProps }) {
   return (

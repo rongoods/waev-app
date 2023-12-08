@@ -1,5 +1,8 @@
 import Link from "next/link.js";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { Comments } from "../comments/Comments"; // Function to fetch comments for a post
+import styles from "./Card.module.css";
 
 const Article = styled.article`
   border: 1px solid black;
@@ -31,24 +34,6 @@ const ScreenReaderOnly = styled.span`
   white-space: nowrap;
   border-width: 0;
 `;
-
-// export default function Card({ id, content, title }) {
-//   return (
-//     <Article key={id}>
-//       <h3>{title}</h3>
-//       <p>{content}</p>
-//       <Link href={`/posts/${id}`} passHref legacyBehavior>
-//         <Anchor>
-//           <ScreenReaderOnly>More Info</ScreenReaderOnly>
-//         </Anchor>
-//       </Link>
-//     </Article>
-//   );
-// }
-
-import { useState, useEffect } from "react";
-import { Comments } from "../testComments/Comments"; // Function to fetch comments for a post
-import styles from "./Card.module.css";
 
 export default function Card({ id, content, title }) {
   const [comments, setComments] = useState([]);
@@ -82,7 +67,6 @@ export default function Card({ id, content, title }) {
         </Anchor>
       </Link>
 
-      {/* Render comments */}
       <div>
         <h4>Comments:</h4>
         <ul>

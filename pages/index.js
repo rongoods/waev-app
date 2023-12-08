@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Card from "../components/testCard/Card";
+import Card from "../components/card/Card";
 import useSWR from "swr";
-import { StyledLink } from "../components/testStyledLink/StyledLink.js";
+import { StyledLink } from "../components/styled-link/StyledLink.js";
 
 const List = styled.ul`
   list-style: none;

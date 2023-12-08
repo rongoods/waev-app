@@ -8,12 +8,11 @@ const FixedLink = styled(Link)`
   position: fixed;
   bottom: 100px;
   right: 20px;
-  font-weight: bold;
-  border: 2px solid black;
+  border: 2px solid white;
   background-color: black;
-  color: rgb(249, 222, 176);
+  color: white;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 1px;
   text-decoration: none;
   z-index: 9999;
 `;
@@ -28,7 +27,7 @@ export default function Layout({ children }) {
       <Nav />
       <br></br>
       <main>{children}</main>
-      <FixedLink href={"/new-post"}>create post</FixedLink>
+      <FixedLink href={"/create"}>create post</FixedLink>
 
       <Footer />
     </>

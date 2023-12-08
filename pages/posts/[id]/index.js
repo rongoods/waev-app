@@ -2,10 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 import styled from "styled-components";
-import { StyledLink } from "../../../components/testStyledLink/StyledLink";
-import { StyledButton } from "../../../components/testStyledButton/StyledButton";
-
-import Comments from "../../../components/testComments/Comments";
+import { StyledLink } from "../../../components/styled-link/StyledLink";
+import { StyledButton } from "../../../components/styled-button/StyledButton";
+import Comments from "../../../components/comments/Comments";
 
 const ButtonContainer = styled.section`
   display: flex;
@@ -50,7 +49,6 @@ export default function DetailsPage() {
         </StyledButton>
       </ButtonContainer>
       <Comments comments={post.comments} />
-      {/* <p>{comments.comment}</p> */}
     </>
   );
 }
