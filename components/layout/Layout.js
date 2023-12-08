@@ -3,6 +3,7 @@ import Footer from "../footer/Footer";
 import Nav from "../nav/Nav";
 import Link from "next/link";
 import styled from "styled-components";
+import Image from "next/image";
 
 const FixedLink = styled(Link)`
   position: fixed;
@@ -27,6 +28,14 @@ export default function Layout({ children }) {
       <Nav />
       <br></br>
       <main>{children}</main>
+      <section className="bg-image">
+        <Image
+          src="/waev-light.PNG"
+          alt="background-wave"
+          fill
+          style={{ objectFit: "contain" }}
+        />
+      </section>
       <FixedLink href={"/create"}>create post</FixedLink>
 
       <Footer />

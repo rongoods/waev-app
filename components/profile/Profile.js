@@ -1,10 +1,45 @@
+// import { loginUrl } from "@/spotify";
 // import { useSession, signIn, signOut } from "next-auth/react";
+// import { useEffect, useState } from "react";
 
 // export default function Profile() {
+//   const [userPlaylists, setUserPlaylists] = useState([]);
 //   const session = useSession();
+
+//   useEffect(() => {
+//     const fetchPlaylists = async () => {
+//       if (session?.status === "authenticated") {
+//         try {
+//           const response = await fetch(
+//             "https://api.spotify.com/v1/me/playlists",
+//             {
+//               headers: {
+//                 Authorization: `Bearer ${session.data.accessToken}`,
+//               },
+//             }
+//           );
+
+//           if (response.ok) {
+//             const playlistsData = await response.json();
+//             setUserPlaylists(playlistsData.items || []);
+//           } else {
+//             // Handle error fetching playlists
+//             console.error("Error fetching playlists:", response.statusText);
+//           }
+//         } catch (error) {
+//           console.error("Error fetching playlists:", error);
+//         }
+//       }
+//     };
+
+//     fetchPlaylists();
+//   }, [session]);
 
 //   return (
 //     <>
+//       <a href={loginUrl} id="signInButton">
+//         sign into your spotify
+//       </a>
 //       <h1>
 //         hey,
 //         {session.status === "authenticated"
@@ -14,9 +49,17 @@
 //       </h1>
 //       <p>
 //         {session.status === "authenticated" ? (
-//           <button type="button" onClick={() => signOut()}>
-//             Sign out {session.data.user?.email}
-//           </button>
+//           <>
+//             <button type="button" onClick={() => signOut()}>
+//               Sign out {session.data.user?.email}
+//             </button>
+//             <h2>My Playlists:</h2>
+//             <ul>
+//               {userPlaylists.map((playlist) => (
+//                 <li key={playlist.id}>{playlist.name}</li>
+//               ))}
+//             </ul>
+//           </>
 //         ) : (
 //           <button
 //             type="button"
@@ -30,78 +73,337 @@
 //     </>
 //   );
 // }
+
+//-----------------------------------------------------
+//friday work
+
+//below is a test
+// import { getTokenFromUrl } from "@/spotify";
+// import SpotifyWebApi from "spotify-web-api-js";
+// import { useState, useEffect } from "react";
+
+// const spotify = new SpotifyWebApi();
+
+// export default function Profile() {
+
+//   const [spotifyToken, setSpotifyToken] = useState("");
+
+//   useEffect(() => {
+//     console.log("this is what i got from the URL: ", getTokenFromUrl());
+//     const _spotifyToken = getTokenFromUrl().access_token;
+//     window.location.hash = "";
+//     console.log("this is the spotify token:", _spotifyToken);
+
+//     if (_spotifyToken) {
+//       setSpotifyToken(_spotifyToken);
+//       spotify.setAccessToken(_spotifyToken);
+//       spotify.getMe().then((user) => {
+//         console.log("user:: ", user);
+//       });
+//     }
+//   }, []);
+
+// }
+
+//--------------------------------------------------
+//this works best so far
+// import { loginUrl } from "@/spotify";
+// import { getTokenFromUrl } from "@/spotify";
+// import SpotifyWebApi from "spotify-web-api-js";
+// import { useState, useEffect } from "react";
+
+// const spotify = new SpotifyWebApi();
+
+// export default function Profile() {
+//   const [spotifyToken, setSpotifyToken] = useState("");
+//   const [userPlaylists, setUserPlaylists] = useState([]);
+//   const [loggedIn, setLoggedIn] = useState(false);
+
+//   useEffect(() => {
+//     const _spotifyToken = getTokenFromUrl().access_token;
+//     window.location.hash = "";
+
+//     if (_spotifyToken) {
+//       setSpotifyToken(_spotifyToken);
+//       setLoggedIn(true);
+//       spotify.setAccessToken(_spotifyToken);
+
+//       spotify
+//         .getUserPlaylists()
+//         .then((playlists) => {
+//           setUserPlaylists(playlists.items); // Save playlists to state
+//         })
+//         .catch((error) => {
+//           console.error("Error fetching playlists: ", error);
+//         });
+//     }
+//   }, []);
+
+//   const handleLogin = () => {
+//     const loginUrl = loginUrl; // Replace with your Spotify login URL
+//     window.location.href = loginUrl;
+//   };
+
+//   // Render user playlists
+//   const renderPlaylists = () => {
+//     return (
+//       <div>
+//         <h2>Your Playlists:</h2>
+//         <ul>
+//           {userPlaylists.map((playlist) => (
+//             <li key={playlist.id}>{playlist.name}</li>
+//           ))}
+//         </ul>
+//       </div>
+//     );
+//   };
+
+//   return (
+//     <div>
+//       {!loggedIn ? (
+//         <a href={loginUrl}>Login to Spotify</a>
+//       ) : (
+//         <div>
+//           {spotifyToken && userPlaylists.length > 0 ? (
+//             renderPlaylists()
+//           ) : (
+//             <p>Loading...</p>
+//           )}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+//---------________________-------------_______________----------
+
+import SpotifyWebApi from "spotify-web-api-js";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { loginUrl } from "@/spotify";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { getTokenFromUrl } from "@/spotify";
+import styles from "./Profile.module.css";
+
+const spotify = new SpotifyWebApi();
 
 export default function Profile() {
+  const [spotifyToken, setSpotifyToken] = useState("");
+  const [user, setUser] = useState(null);
   const [userPlaylists, setUserPlaylists] = useState([]);
-  const session = useSession();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState([]);
+  const [topTracks, setTopTracks] = useState([]);
+  const [currentPlayback, setCurrentPlayback] = useState(null);
 
   useEffect(() => {
-    const fetchPlaylists = async () => {
-      if (session?.status === "authenticated") {
-        try {
-          const response = await fetch(
-            "https://api.spotify.com/v1/me/playlists",
-            {
-              headers: {
-                Authorization: `Bearer ${session.data.accessToken}`,
-              },
-            }
-          );
+    const _spotifyToken = getTokenFromUrl().access_token;
+    window.location.hash = "";
 
-          if (response.ok) {
-            const playlistsData = await response.json();
-            setUserPlaylists(playlistsData.items || []);
-          } else {
-            // Handle error fetching playlists
-            console.error("Error fetching playlists:", response.statusText);
-          }
-        } catch (error) {
-          console.error("Error fetching playlists:", error);
-        }
-      }
-    };
+    if (_spotifyToken) {
+      setSpotifyToken(_spotifyToken);
+      spotify.setAccessToken(_spotifyToken);
 
-    fetchPlaylists();
-  }, [session]);
+      spotify
+        .getMe()
+        .then((userData) => {
+          setUser(userData);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data: ", error);
+        });
+
+      spotify
+        .getUserPlaylists()
+        .then((playlists) => {
+          setUserPlaylists(playlists.items);
+        })
+        .catch((error) => {
+          console.error("Error fetching playlists: ", error);
+        });
+
+      spotify
+        .getMyRecentlyPlayedTracks()
+        .then((tracks) => {
+          setRecentlyPlayedTracks(tracks.items);
+        })
+        .catch((error) => {
+          console.error("Error fetching recently played tracks: ", error);
+        });
+
+      spotify
+        .getMyTopTracks()
+        .then((tracks) => {
+          setTopTracks(tracks.items);
+        })
+        .catch((error) => {
+          console.error("Error fetching top tracks: ", error);
+        });
+
+      spotify
+        .getMyCurrentPlaybackState()
+        .then((playback) => {
+          setCurrentPlayback(playback);
+        })
+        .catch((error) => {
+          console.error("Error fetching current playback: ", error);
+        });
+
+      spotify
+        .getMyCurrentPlayingTrack()
+        .then((track) => {
+          setCurrentTrack(track);
+        })
+        .catch((error) => {
+          console.error("Error fetching current track: ", error);
+        });
+
+      setLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    const loginUrl = { loginUrl }; // Replace with your Spotify login URL
+    window.location.href = loginUrl;
+  };
+
+  const handlePlaylistClick = (playlistId) => {
+    spotify
+      .getPlaylistTracks(playlistId)
+      .then((tracks) => {
+        console.log("Tracks in playlist:", tracks);
+        // Handle playlist tracks
+      })
+      .catch((error) => {
+        console.error("Error fetching playlist tracks: ", error);
+      });
+
+    spotify
+      .getPlaylistCoverImage(playlistId)
+      .then((coverImage) => {
+        console.log("Playlist cover image:", coverImage);
+        // Handle cover image
+      })
+      .catch((error) => {
+        console.error("Error fetching playlist cover image: ", error);
+      });
+  };
+
+  // Functions for playback control
+  const transferPlayback = (deviceIds) => {
+    spotify.transferMyPlayback(deviceIds).catch((error) => {
+      console.error("Error transferring playback: ", error);
+    });
+  };
+
+  const playTrack = () => {
+    spotify.play().catch((error) => {
+      console.error("Error playing track: ", error);
+    });
+  };
+
+  const pauseTrack = () => {
+    spotify.pause().catch((error) => {
+      console.error("Error pausing track: ", error);
+    });
+  };
+
+  const queueTrack = (uri) => {
+    spotify.queue(uri).catch((error) => {
+      console.error("Error queuing track: ", error);
+    });
+  };
+
+  // ... Other playback control functions (skip, previous)
 
   return (
-    <>
-      <a href={loginUrl} id="signInButton">
-        sign into your spotify
-      </a>
-      <h1>
-        hey,
-        {session.status === "authenticated"
-          ? session.data.user?.name || "friend"
-          : "stranger"}
-        !
-      </h1>
-      <p>
-        {session.status === "authenticated" ? (
-          <>
-            <button type="button" onClick={() => signOut()}>
-              Sign out {session.data.user?.email}
-            </button>
-            <h2>My Playlists:</h2>
+    <div className={styles.profileContainer}>
+      {user && (
+        <div className={styles.userProfile}>
+          {user && user.images && user.images.length > 0 ? (
+            <Image src={user.images[0]?.url} alt="User Profile" />
+          ) : (
+            <Image
+              src="/default-profile-image.png"
+              alt="Default Profile Icon"
+              width={50}
+              height={50}
+            />
+          )}
+          <h2>{user ? user.display_name : "Loading..."}</h2>
+          {/* Render user information */}
+        </div>
+      )}
+      {!loggedIn ? (
+        <a href={loginUrl}>Login to Spotify</a>
+      ) : (
+        <div className={styles.playlistsSection}>
+          {/* Render user playlists */}
+          <h3> playlists</h3>
+          {userPlaylists.map((playlist) => (
+            <div key={playlist.id}>
+              <Image
+                src={playlist.images[0]?.url}
+                alt={playlist.name}
+                onClick={() => handlePlaylistClick(playlist.id)}
+                width={150}
+                height={150}
+              />
+              <h3>{playlist.name}</h3>
+            </div>
+          ))}
+          {/* Render recently played tracks */}
+          <div className={styles.recentTracksSection}>
+            {" "}
+            <h3>Recently Played Tracks</h3>
             <ul>
-              {userPlaylists.map((playlist) => (
-                <li key={playlist.id}>{playlist.name}</li>
+              {recentlyPlayedTracks.map((track) => (
+                <li key={track.track.id}>
+                  <Image
+                    src={track.track.album.images[0]?.url}
+                    alt={track.track.name}
+                    width={50}
+                    height={50}
+                  />
+                  {track.track.name}
+                </li>
               ))}
             </ul>
-          </>
-        ) : (
-          <button
-            type="button"
-            onClick={() => signIn("spotify")}
-            disabled={session.status === "loading"}
-          >
-            Sign in with Spotify
-          </button>
-        )}
-      </p>
-    </>
+          </div>
+
+          {/* Render top tracks */}
+          <div className={styles.topTracksSection}>
+            {" "}
+            <h3>Top Tracks</h3>
+            <ul>
+              {topTracks.map((track) => (
+                <li key={track.id}>
+                  <Image
+                    src={track.album.images[0]?.url}
+                    alt={track.name}
+                    width={50}
+                    height={50}
+                  />
+                  {track.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Implement Spotify player */}
+          {currentPlayback && (
+            <div>
+              <h3>Currently Playing</h3>
+              <p>{currentPlayback.item.name}</p>
+              {/* Render playback controls */}
+              {/* Example: */}
+              <button onClick={playTrack}>Play</button>
+              <button onClick={pauseTrack}>Pause</button>
+              {/* Add other playback controls */}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
