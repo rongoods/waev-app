@@ -40,7 +40,6 @@ export default function Card({ id, content, title }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    // Fetch comments for the post with this 'id' when the component mounts
     async function fetchComments() {
       try {
         const commentsData = await Comments(id);
