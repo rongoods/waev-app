@@ -28,6 +28,7 @@ const nextConfig = {
       "mosaic.scdn.co",
       "image-cdn-ak.spotifycdn.com",
       "seeded-session-images.scdn.co",
+      "image-cdn-fa.spotifycdn.com",
     ],
   },
 };

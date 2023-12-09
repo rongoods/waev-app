@@ -30,7 +30,7 @@ export default function Layout({ children }) {
       <main>{children}</main>
       <section className="bg-image">
         <Image
-          src="/waev-light.PNG"
+          src="/wireframe-waev.jpeg"
           alt="background-wave"
           fill
           style={{ objectFit: "contain" }}
