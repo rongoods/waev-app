@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import GlobalStyle from "../styles.js";
 import { SWRConfig } from "swr";
 import Layout from "../components/layout/Layout.js";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ session, Component, pageProps }) {
   return (
@@ -20,7 +21,9 @@ export default function App({ session, Component, pageProps }) {
       >
         <Layout>
           <GlobalStyle />
-          <Component {...pageProps} />
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </Layout>
       </SWRConfig>
     </SessionProvider>

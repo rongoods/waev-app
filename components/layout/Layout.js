@@ -4,6 +4,7 @@ import Nav from "../nav/Nav";
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
+import Providers from "../providers/providers";
 
 const FixedLink = styled(Link)`
   position: fixed;
@@ -15,7 +16,7 @@ const FixedLink = styled(Link)`
   padding: 5px;
   border-radius: 1px;
   text-decoration: none;
-  z-index: 9999;
+  z-index: 4999;
 `;
 
 export default function Layout({ children }) {
@@ -27,13 +28,17 @@ export default function Layout({ children }) {
       </Head>
       <Nav />
       <br></br>
-      <main>{children}</main>
+      <Providers>
+        <main>{children}</main>
+      </Providers>
+
       <section className="bg-image">
         <Image
           src="/wireframe-waev.jpeg"
           alt="background-wave"
-          fill
-          style={{ objectFit: "contain" }}
+          layout="fill"
+          objectFit="cover"
+          //   style={{ objectFit: "contain" }}
         />
       </section>
       <FixedLink href={"/create"}>create post</FixedLink>

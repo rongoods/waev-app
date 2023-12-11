@@ -1,110 +1,3 @@
-// import { loginUrl } from "@/spotify";
-// import { useSession, signIn, signOut } from "next-auth/react";
-// import { useEffect, useState } from "react";
-
-// export default function Profile() {
-//   const [userPlaylists, setUserPlaylists] = useState([]);
-//   const session = useSession();
-
-//   useEffect(() => {
-//     const fetchPlaylists = async () => {
-//       if (session?.status === "authenticated") {
-//         try {
-//           const response = await fetch(
-//             "https://api.spotify.com/v1/me/playlists",
-//             {
-//               headers: {
-//                 Authorization: `Bearer ${session.data.accessToken}`,
-//               },
-//             }
-//           );
-
-//           if (response.ok) {
-//             const playlistsData = await response.json();
-//             setUserPlaylists(playlistsData.items || []);
-//           } else {
-//             // Handle error fetching playlists
-//             console.error("Error fetching playlists:", response.statusText);
-//           }
-//         } catch (error) {
-//           console.error("Error fetching playlists:", error);
-//         }
-//       }
-//     };
-
-//     fetchPlaylists();
-//   }, [session]);
-
-//   return (
-//     <>
-//       <a href={loginUrl} id="signInButton">
-//         sign into your spotify
-//       </a>
-//       <h1>
-//         hey,
-//         {session.status === "authenticated"
-//           ? session.data.user?.name || "friend"
-//           : "stranger"}
-//         !
-//       </h1>
-//       <p>
-//         {session.status === "authenticated" ? (
-//           <>
-//             <button type="button" onClick={() => signOut()}>
-//               Sign out {session.data.user?.email}
-//             </button>
-//             <h2>My Playlists:</h2>
-//             <ul>
-//               {userPlaylists.map((playlist) => (
-//                 <li key={playlist.id}>{playlist.name}</li>
-//               ))}
-//             </ul>
-//           </>
-//         ) : (
-//           <button
-//             type="button"
-//             onClick={() => signIn("spotify")}
-//             disabled={session.status === "loading"}
-//           >
-//             Sign in with Spotify
-//           </button>
-//         )}
-//       </p>
-//     </>
-//   );
-// }
-
-//-----------------------------------------------------
-//friday work
-
-//below is a test
-// import { getTokenFromUrl } from "@/spotify";
-// import SpotifyWebApi from "spotify-web-api-js";
-// import { useState, useEffect } from "react";
-
-// const spotify = new SpotifyWebApi();
-
-// export default function Profile() {
-
-//   const [spotifyToken, setSpotifyToken] = useState("");
-
-//   useEffect(() => {
-//     console.log("this is what i got from the URL: ", getTokenFromUrl());
-//     const _spotifyToken = getTokenFromUrl().access_token;
-//     window.location.hash = "";
-//     console.log("this is the spotify token:", _spotifyToken);
-
-//     if (_spotifyToken) {
-//       setSpotifyToken(_spotifyToken);
-//       spotify.setAccessToken(_spotifyToken);
-//       spotify.getMe().then((user) => {
-//         console.log("user:: ", user);
-//       });
-//     }
-//   }, []);
-
-// }
-
 //--------------------------------------------------
 //this works best so far
 // import { loginUrl } from "@/spotify";
@@ -263,7 +156,7 @@ export default function Profile() {
   }, []);
 
   const handleLogin = () => {
-    const loginUrl = { loginUrl }; // Replace with your Spotify login URL
+    const loginUrl = { loginUrl };
     window.location.href = loginUrl;
   };
 
