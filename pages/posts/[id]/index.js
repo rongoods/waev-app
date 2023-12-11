@@ -17,6 +17,22 @@ const ButtonContainer = styled.section`
   }
 `;
 
+const Heading2 = styled.h2`
+  background-color: white;
+  border: 1px solid black;
+  border-outline: 1px;
+  margin-top: 5px;
+`;
+
+const Paragraph = styled.p`
+  background-color: white;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-outline: 1px;
+  margin-bottom: 5px;
+`;
+
 export default function DetailsPage() {
   const router = useRouter();
   const { isReady } = router;
@@ -37,9 +53,9 @@ export default function DetailsPage() {
       <Link href={"/"} passHref legacyBehavior>
         <StyledLink justifySelf="start">back</StyledLink>
       </Link>
-      <h2>{post.title}</h2>
+      <Heading2>{post.title}</Heading2>
 
-      <p>{post.content}</p>
+      <Paragraph>{post.content}</Paragraph>
       <ButtonContainer>
         <Link href={`/posts/${id}/edit`} passHref legacyBehavior>
           <StyledLink>edit</StyledLink>

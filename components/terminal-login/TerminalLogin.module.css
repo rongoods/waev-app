@@ -1,0 +1,175 @@
+.closeButton,
+.minimizeButton,
+.zoomButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.terminalInput {
+  margin-bottom: 15px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #424242;
+  background-color: black;
+  color: rgb(49, 232, 249);
+}
+.buttons {
+  margin-bottom: 4px;
+  margin-left: -5px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.terminalButton {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.terminalButton:hover {
+  background-color: #0056b3;
+}
+
+.closeButton {
+  background-color: #ff5f56;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.minimizeButton {
+  background-color: #ffbd2e;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.zoomButton {
+  background-color: #28c940;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.circleButton:hover {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.closeButton:hover::after {
+  content: "x";
+}
+
+.minimizeButton:hover::after {
+  content: "_";
+}
+
+.zoomButton:hover::after {
+  content: "⇱⇲";
+}
+.title {
+  flex-grow: 1;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(175, 175, 175);
+}
+
+.terminalText {
+  font-size: 14px;
+  color: rgb(175, 175, 175);
+}
+
+.titleBar {
+  background-color: #343434;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+/* .loginOption {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+.loginOption:hover {
+  background-color: #0056b3;
+} */
+
+/* .backgroundBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url("../../public/IMG_2360.JPG");
+  max-width: 1500px;
+  width: 100vw;
+  position: fixed;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  inset: 0;
+  z-index: 5000;
+} */
+
+.terminal {
+  width: 80%;
+  max-width: 600px;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  font-family: "Courier New", monospace;
+  background-color: black;
+}
+
+.login {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    width: 90%;
+    min-height: 300px;
+  }
+
+  .titleBar {
+    height: 40px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}

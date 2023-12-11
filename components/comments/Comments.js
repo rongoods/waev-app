@@ -14,9 +14,11 @@ export default function Comments({ comments }) {
     padding: 0.5rem;
     text-align: center;
     margin: 5px;
+    background-color: white;
     p {
       border-bottom: solid 1px black;
       padding: 20px;
+      background-color: white;
     }
   `;
 

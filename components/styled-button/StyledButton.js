@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
   border-radius: 1px;
   color: white;
   text-decoration: none;
-
+  border: 1px solid black;
   font-size: inherit;
 
   ${({ variant }) =>

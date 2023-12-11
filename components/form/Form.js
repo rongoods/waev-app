@@ -16,7 +16,6 @@ export const Input = styled.input`
 export const Textarea = styled.textarea`
   font-family: inherit;
   border: 1px solid black;
-
   padding: 0.5rem;
 `;
 
