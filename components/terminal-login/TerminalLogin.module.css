@@ -158,6 +158,9 @@
 .login {
   color: white;
 }
+.loginWriting {
+  color: white;
+}
 
 @media (max-width: 768px) {
   .terminal {

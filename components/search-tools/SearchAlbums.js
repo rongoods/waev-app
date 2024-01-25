@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import styles from "./SearchAlbums.module.css";
+import { useTheme } from "next-themes";
 
 export default function SearchAlbums() {
   const CLIENT_ID = "680c00e1f7a843b4b611679f5a56b0d8";
@@ -12,6 +13,7 @@ export default function SearchAlbums() {
   const [token, setToken] = useState("");
   const [searchKey, setSearchKey] = useState("");
   const [albums, setAlbums] = useState([]);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -33,6 +35,11 @@ export default function SearchAlbums() {
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+  };
+
+  const resetSearch = () => {
+    setSearchKey("");
+    setAlbums([]);
   };
 
   async function searchAlbums(event) {
@@ -57,8 +64,8 @@ export default function SearchAlbums() {
           <Image
             src={album.images[0].url}
             alt=""
-            width={200}
-            height={200}
+            width={125}
+            height={125}
             className={styles.div}
           />
         ) : (
@@ -70,8 +77,8 @@ export default function SearchAlbums() {
   };
 
   return (
-    <div>
-      <h1>search albums</h1>
+    <div className={styles.formInput}>
+      <h1 className={styles.searchTitle}>search albums</h1>
       {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -88,8 +95,12 @@ export default function SearchAlbums() {
             type="text"
             required="true"
             onChange={(event) => setSearchKey(event.target.value)}
+            className={styles.inputField}
           />
           <button type={"submit"}>search</button>
+          <button type="button" onClick={resetSearch}>
+            Clear
+          </button>
         </form>
       ) : (
         <h2>please login</h2>

@@ -138,11 +138,13 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { useState, useEffect } from "react";
 import { getTokenFromUrl } from "@/spotify";
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const spotify = new SpotifyWebApi();
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://localhost:3000/profile";
 const clientId = "680c00e1f7a843b4b611679f5a56b0d8";
 const scopes = [
   "user-read-playback-state",
@@ -167,6 +169,7 @@ const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectU
 )}&response_type=token&show_dialog=true`;
 
 const TerminalLogin = () => {
+  const { data: session } = useSession();
   const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
 
@@ -181,6 +184,10 @@ const TerminalLogin = () => {
       router.push("/");
     }
   }, [router]);
+
+  const redirectToLogin = () => {
+    window.location.href = loginUrl; // Redirect to Spotify authentication
+  };
 
   const handleLogin = () => {
     window.location.href = loginUrl; // Redirect to Spotify authentication
@@ -198,14 +205,38 @@ const TerminalLogin = () => {
         <div className={styles.terminalText}>Terminal ⌥⌘1</div>
       </div>
       <div className={styles.content}>
-        <a href={loginUrl} id="signInButton" className={styles.login}>
+        <p className={styles.loginWriting}>login with spotify..</p>
+        {/* <button onClick={signIn}>login</button> */}
+        {/* <Image
+          onClick={signIn}
+          src="/spotify-pixel.png"
+          alt="Login with Spotify"
+          className={styles.loginImage}
+          width={50}
+          height={50}
+        /> */}
+        {/* <a href={loginUrl} id="signInButton" className={styles.login}>
           Login to Spotify
-        </a>
-        <form className={styles.form} onSubmit={handleLogin}>
-          {/* <button type="submit" className={styles.terminalButton}>
-            Login with Spotify
-          </button> */}
-        </form>
+        </a> */}
+        <Image
+          onClick={redirectToLogin}
+          id="signInButton"
+          className={styles.login}
+          src="/spotify-pixel.png"
+          alt="spotify login"
+          width={50}
+          height={50}
+        />
+        {/* <p className={styles.loginWriting}>login with google...</p> */}
+        {/* <Image
+          id="signInWithGoogle"
+          className={styles.login}
+          src="/google-pixel.png"
+          alt="google login"
+          width={50}
+          height={50}
+        /> */}
+        <p></p>
       </div>
     </div>
   );

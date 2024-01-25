@@ -1,0 +1,28 @@
+[data-theme="dark"] .article {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: black;
+}
+[data-theme="dark"] .commentsInput {
+  background-color: white;
+  color: black;
+}
+
+[data-theme="dark"] .submitComment {
+  border: 1px solid white;
+}
+
+[data-theme="dark"] .comments {
+  color: white;
+}
+
+.comments {
+  color: white;
+}
+
+.commentsInput {
+  color: white;
+  background-color: rgba(99, 99, 99, 0.6);
+}
+.article {
+  background-color: rgba(0, 0, 0, 0.7);
+}

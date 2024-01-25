@@ -1,17 +1,19 @@
-/* Profile.module.css */
-
 .profileContainer {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
   padding: 20px;
   margin: 30px;
+  box-sizing: border-box;
 }
 
 .userProfile {
   display: flex;
   align-items: center;
   gap: 20px;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
 }
 
 .userProfile img {
@@ -24,16 +26,43 @@
   font-size: 24px;
 }
 
-.playlistsSection,
-.recentTracksSection,
-.topTracksSection {
+.playlistsSection {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
-  border: 1px black;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.playlistsSection h3,
+.playlistsSection h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.tracksSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subHeader h3 {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.recentTracksSection ul,
+.topTracksSection ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.8);
+  list-style: none;
+  padding: 20px;
+}
+
 .recentTracksSection h3,
 .topTracksSection h3 {
   font-size: 20px;
@@ -47,8 +76,27 @@
 }
 
 .trackItem img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
 }
 
-/* Add any additional styling or adjustments as needed */
+.username {
+  color: white;
+}
+
+.profileImage {
+  background-color: rgb(184, 184, 184, 0.7);
+}
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .playlistsSection {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    padding: 10px;
+  }
+
+  .recentTracksSection ul,
+  .topTracksSection ul {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    padding: 10px;
+  }
+}

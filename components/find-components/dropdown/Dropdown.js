@@ -1,9 +1,12 @@
 import React from "react";
+import styles from "./Dropdown.module.css";
+import { useTheme } from "next-themes";
 
 const Dropdown = (props) => {
   const dropdownChanged = (e) => {
     props.changed(e.target.value);
   };
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="col-sm-6 form-group row px-0">
@@ -11,7 +14,7 @@ const Dropdown = (props) => {
       <select
         value={props.selectedValue}
         onChange={dropdownChanged}
-        className="form-control form-control-sm col-sm-10"
+        className={styles.dropdown}
       >
         <option key={0}>Select...</option>
         {props.options.map((item, idx) => (

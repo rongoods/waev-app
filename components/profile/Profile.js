@@ -76,6 +76,7 @@ import Image from "next/image";
 import { loginUrl } from "@/spotify";
 import { getTokenFromUrl } from "@/spotify";
 import styles from "./Profile.module.css";
+import PlaySong from "../play-song/PlaySong";
 
 const spotify = new SpotifyWebApi();
 
@@ -221,61 +222,59 @@ export default function Profile() {
               alt="Default Profile Icon"
               width={50}
               height={50}
+              className={styles.profileImage}
             />
           )}
-          <h2>{user ? user.display_name : "Loading..."}</h2>
-          {/* Render user information */}
+          <h2 className={styles.username}>
+            {user ? user.display_name : "Loading..."}
+          </h2>
         </div>
       )}
       {!loggedIn ? (
         <a href={loginUrl}>Login to Spotify</a>
       ) : (
-        <div className={styles.playlistsSection}>
-          {/* Render user playlists */}
-          <h3> playlists</h3>
-          {userPlaylists.map((playlist) => (
-            <div key={playlist.id}>
-              <Image
-                src={playlist.images[0]?.url}
-                alt={playlist.name}
-                onClick={() => handlePlaylistClick(playlist.id)}
-                width={150}
-                height={150}
-              />
-              <h3>{playlist.name}</h3>
-            </div>
-          ))}
-          {/* Render recently played tracks */}
+        <div className={styles.mainContent}>
+          <div className={styles.playlistsSection}>
+            <h3 calssName={styles.subHeader}> playlists</h3>
+            {userPlaylists.map((playlist) => (
+              <div key={playlist.id}>
+                <Image
+                  src={playlist.images[0]?.url}
+                  alt={playlist.name}
+                  onClick={() => handlePlaylistClick(playlist.id)}
+                  width={150}
+                  height={150}
+                />
+                <h3>{playlist.name}</h3>
+              </div>
+            ))}
+          </div>
           <div className={styles.recentTracksSection}>
-            {" "}
-            <h3>Recently Played Tracks</h3>
+            <h3 calssName={styles.subHeader}>Recently Played Tracks</h3>
             <ul>
               {recentlyPlayedTracks.map((track) => (
                 <li key={track.track.id}>
                   <Image
                     src={track.track.album.images[0]?.url}
                     alt={track.track.name}
-                    width={50}
-                    height={50}
+                    width={100}
+                    height={100}
                   />
                   {track.track.name}
                 </li>
               ))}
             </ul>
           </div>
-
-          {/* Render top tracks */}
           <div className={styles.topTracksSection}>
-            {" "}
-            <h3>Top Tracks</h3>
+            <h3 calssName={styles.subHeader}>Top Tracks</h3>
             <ul>
               {topTracks.map((track) => (
                 <li key={track.id}>
                   <Image
                     src={track.album.images[0]?.url}
                     alt={track.name}
-                    width={50}
-                    height={50}
+                    width={100}
+                    height={100}
                   />
                   {track.name}
                 </li>
@@ -289,10 +288,12 @@ export default function Profile() {
               <h3>Currently Playing</h3>
               <p>{currentPlayback.item.name}</p>
               {/* Render playback controls */}
-              {/* Example: */}
               <button onClick={playTrack}>Play</button>
               <button onClick={pauseTrack}>Pause</button>
-              {/* Add other playback controls */}
+              <PlaySong
+                trackId={currentPlayback.item.id}
+                accessToken={spotifyToken}
+              />
             </div>
           )}
         </div>

@@ -3,8 +3,11 @@ import { FormContainer, Input, Label } from "../form/Form";
 import { StyledButton } from "../styled-button/StyledButton";
 import { useRouter } from "next/router.js";
 import { mutate } from "swr";
+import styles from "./Comments.module.css";
+import { useTheme } from "next-themes";
 
 export default function Comments({ comments }) {
+  const { theme, setTheme } = useTheme();
   const Article = styled.article`
     display: flex;
     flex-direction: column;
@@ -14,7 +17,8 @@ export default function Comments({ comments }) {
     padding: 0.5rem;
     text-align: center;
     margin: 5px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
     p {
       border-bottom: solid 1px black;
       padding: 20px;
@@ -43,22 +47,28 @@ export default function Comments({ comments }) {
   }
 
   return (
-    <Article>
+    <Article className={styles.article}>
       {comments && (
         <>
           {comments.map(({ comment }, idx) => {
             return (
-              <div key={idx}>
-                <span>{comment}</span>
+              <div key={idx} className={styles.commentsDiv}>
+                <span className={styles.comments}>{comment}</span>
               </div>
             );
           })}
         </>
       )}
       <FormContainer onSubmit={handleSubmitComment}>
-        {/* <Label htmlFor="comment">Your Comment</Label> */}
-        <Input type="text" name="comment" placeholder="your comment.." />
-        <StyledButton type="submit">Send</StyledButton>
+        <Input
+          type="text"
+          name="comment"
+          placeholder="your comment.."
+          className={styles.commentsInput}
+        />
+        <StyledButton type="submit" className={styles.submitComment}>
+          Send
+        </StyledButton>
       </FormContainer>
     </Article>
   );

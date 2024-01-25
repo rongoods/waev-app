@@ -35,6 +35,11 @@ export default function SearchSongs() {
     window.localStorage.removeItem("token");
   };
 
+  const resetSearch = () => {
+    setSearchKey("");
+    setTracks([]);
+  };
+
   async function searchSongs(event) {
     event.preventDefault();
 
@@ -57,8 +62,8 @@ export default function SearchSongs() {
           <Image
             src={track.album.images[0].url}
             alt=""
-            width={200}
-            height={200}
+            width={125}
+            height={125}
             className={styles.div}
           />
         ) : (
@@ -70,9 +75,9 @@ export default function SearchSongs() {
   };
 
   return (
-    <div>
+    <div className={styles.formInput}>
       <h1>search songs</h1>
-      {!token ? (
+      {/* {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
         >
@@ -80,7 +85,7 @@ export default function SearchSongs() {
         </a>
       ) : (
         <button onClick={logout}>logout</button>
-      )}
+      )} */}
 
       {token ? (
         <form onSubmit={searchSongs}>
@@ -88,8 +93,12 @@ export default function SearchSongs() {
             type="text"
             required="true"
             onChange={(event) => setSearchKey(event.target.value)}
+            className={styles.inputField}
           />
           <button type={"submit"}>search</button>
+          <button type="button" onClick={resetSearch}>
+            Clear
+          </button>
         </form>
       ) : (
         <h2>please login</h2>
