@@ -3,13 +3,23 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Comments } from "../comments/Comments"; // Function to fetch comments for a post
 import styles from "./Card.module.css";
+import { useTheme } from "next-themes";
+import BookmarkButton from "../bookmarks/Bookmarks";
+
+// const Article = styled.article`
+//   border-radius: 1px;
+//   padding: 5px;
+//   margin: 15px;
+//   border: 1px solid black;
+//   background-color: rgba(255, 255, 255, 0.9);
+// `;
 
 const Article = styled.article`
-  border: 1px solid black;
   border-radius: 1px;
   padding: 5px;
   margin: 15px;
-  background-color: white;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const Anchor = styled.a`
@@ -38,6 +48,7 @@ const ScreenReaderOnly = styled.span`
 
 export default function Card({ id, content, title }) {
   const [comments, setComments] = useState([]);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     async function fetchComments() {
@@ -53,9 +64,10 @@ export default function Card({ id, content, title }) {
   }, [id]);
 
   return (
-    <Article key={id}>
-      <h3>{title}</h3>
-      <p>{content}</p>
+    <Article key={id} className={styles.article}>
+      <BookmarkButton />
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.content}>{content}</p>
       <Link
         href={`/posts/${id}`}
         passHref
@@ -68,8 +80,8 @@ export default function Card({ id, content, title }) {
       </Link>
 
       <div>
-        <h4>Comments:</h4>
-        <ul>
+        <h4 className={styles.commentsTitle}>Comments:</h4>
+        <ul className={styles.comments}>
           {comments.map((comment) => (
             <li key={comment._id}>{comments.comment}</li>
           ))}

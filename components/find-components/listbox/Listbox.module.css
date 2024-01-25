@@ -1,0 +1,35 @@
+/* ExplorerPage.module.css */
+
+.listBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.listItem {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.listItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.listItem img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.trackName {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}

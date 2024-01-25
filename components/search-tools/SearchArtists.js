@@ -35,6 +35,11 @@ export default function SearchArtists() {
     window.localStorage.removeItem("token");
   };
 
+  const resetSearch = () => {
+    setSearchKey("");
+    setArtist([]);
+  };
+
   async function searchArtists(event) {
     event.preventDefault();
 
@@ -70,9 +75,9 @@ export default function SearchArtists() {
   };
 
   return (
-    <div>
-      <h1>search artist</h1>
-      {!token ? (
+    <div className={styles.formInput}>
+      <h1 className={styles.searchTitle}>search artist</h1>
+      {/* {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
         >
@@ -80,7 +85,7 @@ export default function SearchArtists() {
         </a>
       ) : (
         <button onClick={logout}>logout</button>
-      )}
+      )} */}
 
       {token ? (
         <form onSubmit={searchArtists}>
@@ -88,8 +93,12 @@ export default function SearchArtists() {
             type="text"
             required="true"
             onChange={(event) => setSearchKey(event.target.value)}
+            className={styles.inputField}
           />
           <button type={"submit"}>search</button>
+          <button type="button" onClick={resetSearch}>
+            Clear
+          </button>
         </form>
       ) : (
         <h2>please login</h2>

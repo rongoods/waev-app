@@ -15,7 +15,7 @@ export default function Discover() {
       <SearchAlbums />
       <SearchSongs />
       <TestExplorerPage />
-      <SearchUsers />
+      {/* <SearchUsers /> */}
     </>
   );
 }

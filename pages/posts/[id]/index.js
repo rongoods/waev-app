@@ -18,14 +18,16 @@ const ButtonContainer = styled.section`
 `;
 
 const Heading2 = styled.h2`
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
   border: 1px solid black;
   border-outline: 1px;
   margin-top: 5px;
 `;
 
 const Paragraph = styled.p`
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;

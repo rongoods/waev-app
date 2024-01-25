@@ -1,8 +1,27 @@
 .searchedchild {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  /* border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.7); */
 }
 
-.searchedparent {
+.formInput {
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.inputField {
+  background-color: white;
+  color: black;
+}
+
+[data-theme="dark"] .formInput {
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.seachTitle {
+  color: white;
 }

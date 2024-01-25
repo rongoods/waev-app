@@ -9,10 +9,14 @@ export default function ProfilePage() {
     <>
       <Profile />
       <br></br>
-      <CopyArtistSearch />
+      {/* <CopyArtistSearch /> */}
       <CopySongSearch />
-      <CopyPlaylistSearch />
+      {/* <CopyPlaylistSearch /> */}
       <SpotifyPlayer />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </>
   );
 }

@@ -34,8 +34,6 @@
   font-family: "Courier New", Courier, monospace;
   padding: 0;
   margin: 0;
-  /* background-color: rgb(249, 222, 176); */
-  /* background-color: white; */
   color: rgb(0, 0, 0);
   box-sizing: border-box;
   background-image: url("/public/3dwaev-background.jpeg");
@@ -95,3 +93,11 @@ main {
   z-index: -1;
   background-color: white;
 }
+
+/* img {
+  filter: grayscale(100%);
+}
+
+img:hover {
+  filter: none;
+} */

@@ -30,6 +30,7 @@ const nextConfig = {
       "seeded-session-images.scdn.co",
       "image-cdn-fa.spotifycdn.com",
       "thisis-images.spotifycdn.com",
+      "blend-playlist-covers.spotifycdn.com",
     ],
   },
 };
