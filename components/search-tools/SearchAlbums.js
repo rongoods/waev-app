@@ -78,7 +78,7 @@ export default function SearchAlbums() {
 
   return (
     <div className={styles.formInput}>
-      <h1 className={styles.searchTitle}>search albums</h1>
+      <h1 className={styles.formLabel}>search albums</h1>
       {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -86,7 +86,9 @@ export default function SearchAlbums() {
           login to spotify
         </a>
       ) : (
-        <button onClick={logout}>logout</button>
+        <button onClick={logout} className={styles.button}>
+          logout
+        </button>
       )}
 
       {token ? (
@@ -97,9 +99,11 @@ export default function SearchAlbums() {
             onChange={(event) => setSearchKey(event.target.value)}
             className={styles.inputField}
           />
-          <button type={"submit"}>search</button>
-          <button type="button" onClick={resetSearch}>
-            Clear
+          <button type={"submit"} className={styles.button}>
+            search
+          </button>
+          <button type="button" className={styles.button} onClick={resetSearch}>
+            clear
           </button>
         </form>
       ) : (

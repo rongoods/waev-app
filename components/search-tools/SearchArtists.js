@@ -76,7 +76,7 @@ export default function SearchArtists() {
 
   return (
     <div className={styles.formInput}>
-      <h1 className={styles.searchTitle}>search artist</h1>
+      <h1 className={styles.formLabel}>search artist</h1>
       {/* {!token ? (
         <a
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -95,9 +95,11 @@ export default function SearchArtists() {
             onChange={(event) => setSearchKey(event.target.value)}
             className={styles.inputField}
           />
-          <button type={"submit"}>search</button>
-          <button type="button" onClick={resetSearch}>
-            Clear
+          <button type={"submit"} className={styles.button}>
+            search
+          </button>
+          <button type="button" onClick={resetSearch} className={styles.button}>
+            clear
           </button>
         </form>
       ) : (

@@ -7,7 +7,7 @@
 }
 
 .formInput {
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
@@ -17,7 +17,16 @@
   color: black;
 }
 
-.searchTitle h1 {
-  background-color: rgba(0, 0, 0, 0.8);
+.formLabel {
+  /* background-color: rgba(0, 0, 0, 0.8); */
   color: white;
+  font-weight: lighter;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  border: 1px white solid;
+  margin: 3px;
+  padding: 1px;
 }
