@@ -118,6 +118,7 @@ const App = () => {
 
   return (
     <div className={styles.formInput}>
+      <h1 className={styles.formLabel}>spotify playlist</h1>
       <form onSubmit={buttonClicked}>
         <Dropdown
           label="Genre :"
@@ -134,7 +135,7 @@ const App = () => {
           className={styles.dropdown}
         />
         <div className="col-sm-6 row form-group px-0">
-          <button type="submit" className="btn btn-success col-sm-12">
+          <button type="submit" className={styles.button}>
             Search
           </button>
         </div>
